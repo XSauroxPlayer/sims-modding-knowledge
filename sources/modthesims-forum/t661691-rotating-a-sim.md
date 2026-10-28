@@ -27,5 +27,5 @@ ani_, Lyralei, zoe22. Synthesis: `topics/jazz.md`, `topics/ik-and-slots.md`.
   directly, so re-setting parameters may require re-acquiring the machine.
 
 ## Against verified findings
-- RSLT matrix = bone bind pose in object space (verified on EA game files by the project author): consistent with
+- RSLT matrix = bone bind pose in object space (verified on EA game files by XSauroxPlayer): consistent with
   "must match the rig".

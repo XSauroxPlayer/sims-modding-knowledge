@@ -22,7 +22,7 @@ TheSweetSimmer, simmythesim, Lyralei. An open question thread; no confirmed answ
 - Adding IK constraints directly in Blender snaps the hands exactly onto the slot, which the game does not do.
 
 ## Against verified findings
-- The project author's analysis of the game binary (`research/ts3-native-ik.md`) answers this: the per-target
+- XSauroxPlayer's analysis of the game binary (`research/ts3-native-ik.md`) answers this: the per-target
   weight of target N is the local Z of `Info<N+1>` (gate 2^-16), the game averages the `slot ∘ Info` frames (Info rotation counts too)
   and then composes the raw `slotOffset` track once. So the offset **is** animated data in the CLIP, not a global
   default, and the spec found **no per-body-shape or per-outfit hand offset** in the IK functions (section 7 there).

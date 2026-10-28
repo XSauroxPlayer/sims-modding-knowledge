@@ -18,4 +18,4 @@ Raven Shadow, orangemittens. Synthesis: `topics/object-creation.md`, `topics/ik-
 - Add the RIG joints at the slot's XYZ, then matching RSLT entries with hashed names (s3pe FNV32 tool).
 
 ## Against verified findings
-- Agrees with what the project author verified on EA game files: RSLT bone hash = FNV32 of the lowercase joint name.
+- Agrees with what XSauroxPlayer verified on EA game files: RSLT bone hash = FNV32 of the lowercase joint name.

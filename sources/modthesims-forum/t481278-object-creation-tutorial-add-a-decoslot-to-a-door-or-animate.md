@@ -20,6 +20,6 @@ BloomsBase (credit CMO). Synthesis: `topics/object-creation.md`, `topics/ik-and-
 4. Pitfall: X and Z sometimes need swapping depending on how the mesh is oriented.
 
 ## Against verified findings
-- Consistent with what the project author verified on EA game files: RSLT slots reference a bone by FNV32 hash. That a slot on
+- Consistent with what XSauroxPlayer verified on EA game files: RSLT slots reference a bone by FNV32 hash. That a slot on
   an animated part follows it only via a child joint is the tutorial's claim, not verified independently. The axis-swap
   remark is unexplained (likely Y-up vs object space).

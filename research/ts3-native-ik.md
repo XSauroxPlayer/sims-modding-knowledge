@@ -6,7 +6,7 @@ status: verified-in-binary
 ---
 # TS3 runtime IK: what the engine does with a CLIP's IK table
 
-Original research by the project author: a read-only static analysis of the game executable **TS3W.exe 1.67**
+Original research by XSauroxPlayer: a read-only static analysis of the game executable **TS3W.exe 1.67**
 (Windows). Function addresses below are RVAs (image base 0x400000) so that others can find the same code; no
 decompiled code is reproduced here. The description was also checked against converted clips that play in game
 (hands landing on object levers and handles), so the overall model is `verified-in-game` as well.
@@ -30,8 +30,7 @@ Each statement carries one of these marks:
   (`<S>_armExportPole`), the `<S>_slotInfo` bone, the `<S>_slotOffset` bone, and the number of bones after the chain
   root whose MODEL transform is rebuilt after solving. At most six chains are handled. [binary]
 - **Chain roles.** On the adult rig `auRig` the chain index is also its role: 0 left arm, 1 right arm, 2 and 3 legs
-  (with pelvis and floor correction), 4 root. [inferred from the code paths; the order matches EA clips, which the
-  project author checked over EA's CLIP files]
+  (with pelvis and floor correction), 4 root. [inferred from the code paths; the order matches EA clips, which XSauroxPlayer checked over EA's CLIP files]
 - **CLIP IK table.** For each chain the CLIP lists targets `{index N, actor namespace, slot or bone name}`. When the
   clip is bound to actors, each target becomes `{object id, slot bone index on that object, N}`; up to 11 per
   chain. [binary]

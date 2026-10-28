@@ -24,7 +24,7 @@ Slots and hands: `topics/ik-and-slots.md`.
 ## Mesh facts
 - Cloned High LOD: **group 0 = ground shadow quad, group 1 = object**; keep the order or materials break
   (aikea-guinea). The ground shadow is a textured quad whose **normals are all 0**. Low LOD usually has no shadow group.
-- Sun shadows are separate shadow LODs (TSRW "Generate Sunshadow"). Verified in game by the project author: shadow
+- Sun shadows are separate shadow LODs (TSRW "Generate Sunshadow"). Verified in game by XSauroxPlayer: shadow
   LODs 0x10000/0x10001 use 8-byte position-only vertices (shorts normalised with the MATD PosOffset/PosScale); a
   28-byte body-style vertex format crashed the game. The ground shadow quad inside the main LOD is a different thing
   and was not compared.
@@ -32,11 +32,21 @@ Slots and hands: `topics/ik-and-slots.md`.
 - TSRW import of a mesh with more groups than the clone fails ("groupcount does not match"); merge groups and atlas
   the textures.
 
+- Scenegraph families: GEOM (CAS mesh), MODL/MLOD (object mesh and LODs), MATD (material), VPXY (bounds and
+  links), RSLT (slots), FTPT (footprint) (wiki `Sims_3:RCOL`, via the ModestPixels pack, `sources/modestpixels/knowledge-pack.md`).
+- Tool versions matter: cmomoney's TS3 Tools target Blender 2.7 (https://modthesims.info/d/433882), the GEOM Tools
+  Blender 2.6 (https://modthesims.info/t/443780), Sims 3 ClipTool Blender 2.67b with prepared Sim and pet rigs.
+- Audio: denton47's TS3 Sound Tool (beta, MTS t=659038) relies on EALayer3 and ADPCM; samples in one Audio Tuner
+  must not mix the two codecs (ModestPixels pack).
+
 ## Textures and channels
 - Mask: channels 1-3 = R, G, B; channel 4 = **mask alpha** (orangemittens). DXT5 for masks with alpha, multiplier and
   specular; DXT1 for a mask without alpha (aikea-guinea).
 - Specular with black alpha lets the pattern's own specular show through.
 - Texture Tweaker 3 can upgrade a 3-channel EA clone to 4 channels; the mask still needs the 4th region + alpha.
+
+- Recolourable objects need enabled channels, suitable masks and matching preset pattern settings; Heaven's guide
+  converts NonCASTable to CASTable with Texture Tweaker (cited by the ModestPixels pack).
 
 ## Script class and behaviour
 - OBJK component `Script` holds the class (e.g. `Sims3.Gameplay.Objects.FoodObjects.DriedFoodHigh`). A stray

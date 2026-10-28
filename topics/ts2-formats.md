@@ -5,8 +5,8 @@ status: verified-in-game
 ---
 # TS2 formats
 
-Facts marked `verified-in-game` were tested in game by the project author; `verified-in-binary` facts were checked
-byte for byte on EA game files by the project author. Community facts link their source page.
+Facts marked `verified-in-game` were tested in game by XSauroxPlayer; `verified-in-binary` facts were checked
+byte for byte on EA game files by XSauroxPlayer. Community facts link their source page.
 
 ## Verified facts
 - Packages: DBPF 1.1, QFS compression, resources keyed by type/group/instance plus a second instance word; when two
@@ -47,5 +47,5 @@ byte for byte on EA game files by the project author. Community facts link their
 ## Contradictions and open points
 - Morita (simblr 7096) sets TS2 AniMesh length as frames x 50 ms. **Contradicted** for EA data by the verified ANIM
   timing above: EA TS2 ANIMs are baked at 24 fps; 50 ms is that author's exporter setting. (`contradicted`)
-- Slots 101 says BHAV slot numbers count per kind; the project author's SLOT reader indexes entries and was not
+- Slots 101 says BHAV slot numbers count per kind; XSauroxPlayer's SLOT reader indexes entries and was not
   re-checked against this rule when reading `Go To Routing Slot` operands. (open)

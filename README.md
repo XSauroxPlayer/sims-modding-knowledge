@@ -13,8 +13,8 @@ Mod The Sims (MTS). "The Sims" is a trademark of Electronic Arts Inc.
 ## Layout
 - `INDEX.md` - every page with its author, game, tags and status. Start here.
 - `topics/` - syntheses per subject (9 pages). Each lists its sources and a "Contradictions" or "Open" section.
-- `sources/<site>/` - one summary per source page (77 pages), each with the original URL and author.
-- `research/` - original research by the project author (currently how TS3 applies a clip's runtime IK).
+- `sources/<site>/` - one summary per source page (78 pages), each with the original URL and author.
+- `research/` - original research by [XSauroxPlayer](https://github.com/XSauroxPlayer) (currently how TS3 applies a clip's runtime IK).
 - `templates/source-page.md` - the template for a new source page.
 - `tools/` - search and index scripts (Python 3.9+, no dependencies).
 
@@ -25,8 +25,8 @@ single facts inline. The labels mean:
 
 | status | how it was established |
 |---|---|
-| `verified-in-game` | Tested in game by the project author: content built that way works (or fails) as stated. |
-| `verified-in-binary` | Checked by the project author byte for byte on EA game files, or by static analysis of the game executable (`research/`). |
+| `verified-in-game` | Tested in game by XSauroxPlayer: content built that way works (or fails) as stated. |
+| `verified-in-binary` | Checked by XSauroxPlayer byte for byte on EA game files, or by static analysis of the game executable (`research/`). |
 | `community-reported` | What the source says. Summarised faithfully but not independently checked here. |
 | `contradicted` | The source conflicts with another source or with a verified finding. The page says where and why. |
 
@@ -53,6 +53,9 @@ Terms are case-insensitive regular expressions. Plain `grep -ri` over the folder
 - SimsWiki (simswiki.info): no content licence or copyright page could be found on the site (checked 2026-10-28:
   the usual MediaWiki copyright and disclaimer pages return "not found", and the footer shows no licence). Its pages
   are therefore treated as owned by their contributors: summarised and linked, not copied.
+- ModestPixels' Sims 3 Modding Knowledge Pack (v1.0, October 2026) was shared privately with XSauroxPlayer and is
+  summarised with ModestPixels' permission in `sources/modestpixels/knowledge-pack.md`; the pack itself is not
+  included.
 - Mod The Sims forum posts, tumblr posts, blogs and other sites: owned by their authors, under each site's terms.
 - Some pages were read through a normal web browser because the site refuses plain HTTP clients. Sites whose
   robots.txt disallows automated readers (for example sims4studio.com) were not read.

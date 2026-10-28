@@ -22,6 +22,6 @@ Reverse direction of TS2 -> TS3 conversion, but the tool chain and rig facts tra
 
 ## Contradiction to flag
 - The tutorial sets AniMesh "Length (ms)" to **frames x 50 ms** ("one Frame=50 Milliseconds", i.e. 20 fps).
-  Verified in game by the project author: EA TS2 ANIMs are baked at
+  Verified in game by XSauroxPlayer: EA TS2 ANIMs are baked at
   **24 fps (33.3 ticks of 1/800 s per key)**, key i at i/(n-1) of the duration. The 50 ms figure is the author's
   exporter setting, not EA data. Do not use it for EA ANIM timing.

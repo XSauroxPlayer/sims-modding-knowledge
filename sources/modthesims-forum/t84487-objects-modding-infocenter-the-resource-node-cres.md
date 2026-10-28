@@ -21,5 +21,5 @@ Numenor (structure credited to Raquelcesar). The PDF attachment was not download
   hierarchy block points at them (`cShapeRefNode` for shapes and mirrors, `cLightRefNode` for lights).
 
 ## Against verified findings
-- The project author's TS2 extractor reads CRES transforms for slot and bone positions. The "X left, Y/Z swapped"
+- XSauroxPlayer's TS2 extractor reads CRES transforms for slot and bone positions. The "X left, Y/Z swapped"
   note is SimPE's display convention and was not re-checked here.

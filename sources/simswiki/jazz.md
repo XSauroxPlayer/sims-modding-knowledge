@@ -51,6 +51,9 @@ BlendMotionAccumulation 0x8000.
   TimingSlave, which is 0x30 with the wiki values but 0x60 with s3pi's (0x20 | 0x40 = TimingIgnored 0x60). s3pi is
   internally consistent; the wiki table looks shifted by one row from 0x10 up (Mirror and OverrideMirror merged into
   one row). Not verified against EA data.
+- The ModestPixels knowledge pack (`sources/modestpixels/knowledge-pack.md`) records the same table as read on 2026-10-27 with fewer rows
+  (TimingIgnored 0x40, ForceBlend 0x80, BaseClipIsSocial 0x400, BaseClipIsObjectOnly 0x1000, HoldPose 0x4000,
+  BlendMotionAccumulation 0x8000): same values, so it inherits the same contradiction with s3pi.
 
 ## Create Prop / Random
 - Props: catalog GUID with type 0x139F7591; examples: repair tools, toy xylophone mallets, the Grim Reaper's scythe.

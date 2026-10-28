@@ -49,7 +49,7 @@ TheSweetSimmer (OP), replies by zoe22, lizcandor, Xantak (2023 Q&A on script-cre
   The asker's soft reset came from not assigning the prop actor.
 
 ## Against verified findings
-- Agrees with the project author's converted clips: prop placement follows the prop rig's `transformBone` (+ `_rot`).
+- Agrees with XSauroxPlayer's converted clips: prop placement follows the prop rig's `transformBone` (+ `_rot`).
 - BOND slot offsets: this tutorial is about **slots used as parents**; the binary analysis (`research/ts3-native-ik.md`) says the IK `slotOffset`
   is the raw CLIP track with no per-outfit term in the IK code. Both can be true (parenting to a slot vs IK
   target math); not contradictory, but BOND's effect on slot positions at runtime is untraced.

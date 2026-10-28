@@ -38,6 +38,12 @@ marked so).
 - Excel-style tuning text keys (pattern inferred from one example): STBL id = FNV64 of `Gameplay/Excel/<path>:<Key>`; a TV channel name is
   FNV64 of `Gameplay/Excel/TV/TVChannel:<Name>`; a missing string shows a blank pie menu (MTS t=396117).
 
+- Cache files the game rebuilds (MTS cache guide, via the ModestPixels pack, `sources/modestpixels/knowledge-pack.md`): `scriptCache.package`
+  (mods), `compositorCache.package` (objects), `CASPartCache.package` (CAS), `simCompositorCache.package` (Sims),
+  `socialCache.package`. Thumbnail caches are separate.
+- Install layout since patch 1.12: `Mods\Resource.cfg` plus `Mods\Packages` and `Mods\Overrides` under the
+  game's Documents folder; ZIP files must be extracted first.
+
 ## Not yet covered
 - Simlogical "ITUN Modding Discussion" page; MTS Tuning forum threads.
 

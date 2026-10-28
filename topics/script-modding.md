@@ -31,6 +31,14 @@ S3SA 0x073FAA07 (see INDEX), `sources/simblr/110-...` (Lyralei Jazz + script), M
 - Object classes are named in OBJK `Script` (see `topics/object-creation.md`). After changes delete
   `scriptcache.package`.
 
+- S3SA is a wrapper around the assembly, not a renamed DLL: add it with the tool's import. The pure-script tutorial
+  (Buzzler) does not require the resource name to match the DLL file name (ModestPixels pack, `sources/modestpixels/knowledge-pack.md`).
+- Patch 1.69: NRaas documents a startup warning when a core mod was built for another game version
+  (https://www.nraas.net/community/Patch-1-69).
+- Lifecycle (ModestPixels pack, from NRaas Relativity and Saver source): set things up at world load, stop timers at
+  world exit, and revert temporary changes before saving. Static fields are not saved; do not assume they persist or
+  reset. Test objects that exist at load and objects created later, new Sims, save and reload, repeated use.
+
 ## Animation from script
 - High level: `StandardEntry(); EnterStateMachine("Machine", "Enter", "x"); SetActor("obj", Target);
   EnterState("x", "Enter"); AnimateSim("State"); ... AnimateSim("Exit"); StandardExit();`. Missing `StandardExit`
@@ -70,6 +78,15 @@ S3SA 0x073FAA07 (see INDEX), `sources/simblr/110-...` (Lyralei Jazz + script), M
 - Sim interactions from a pure script mod: add on world load to `Queries.GetObjects<Sim>()`, listen to
   `kSimInstantiated` and `kSimAgeTransition`, and skip Sims that already have the interaction (a reset re-fires
   instantiation) (MTS t=491875).
+
+## Strings (STBL 0x220557DA) and locales
+- The top byte of the STBL instance is the language. Entries carry a 64-bit string id; text is UTF-16 LE.
+- Several tables defining the same id: the table whose instance has the lowest low 32 bits wins; with the same
+  instance, package priority decides (wiki `Sims_3:0x220557DA`, via the ModestPixels pack, `sources/modestpixels/knowledge-pack.md`).
+- Locale ids 0x00 to 0x16 are hexadecimal, 23 languages: 0x00 English, 0x05 Dutch, 0x07 French, 0x08 German,
+  0x13 Spanish (Spain), 0x14 Spanish (Mexico) (wiki `Sims_3:Locales`). Reading them as decimal is a common mistake.
+- DBPF keys: type, group and a 64-bit instance stored as high and low halves; some fields may be stored once in the
+  index header. Write keys as zero-padded hex 8/8/16 digits (wiki `Sims_3:DBPF`, via the pack).
 
 ## Not yet covered
 - Core modding (2009 IL round trip, one core mod at a time): `sources/modthesims-forum/t354419-...md`.

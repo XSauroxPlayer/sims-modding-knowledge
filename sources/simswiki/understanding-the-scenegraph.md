@@ -27,5 +27,5 @@ Synthesis: `topics/ts2-formats.md`.
   resources run SimPE **Fix Integrity**.
 
 ## Against verified findings
-- Matches the traversal used by the project author's TS2 extractor (CRES/SHPE/GMND/GMDC and TXMT texture names); no
+- Matches the traversal used by XSauroxPlayer's TS2 extractor (CRES/SHPE/GMND/GMDC and TXMT texture names); no
   conflict.

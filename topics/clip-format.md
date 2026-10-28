@@ -6,7 +6,7 @@ status: community-reported
 # CLIP format
 
 Main sources: `sources/simswiki/0x6b20c4f3.md` (wiki layout), the s3pi-wrappers `ClipResource.cs` parser
-(https://github.com/ChaosMageX/s3pi-wrappers), facts verified in game by the project author (marked
+(https://github.com/ChaosMageX/s3pi-wrappers), facts verified in game by XSauroxPlayer (marked
 `verified-in-game`), and `research/ts3-native-ik.md` for what the engine does with the IK table.
 
 ## Layout in one paragraph
@@ -32,6 +32,12 @@ slot 512 B}`) -> `=CE=` events v0x103 -> 16-byte end block `0,0,0,1.0`. Details:
 - TS4 (s4animtools): rig name = actor `x`, unique clip names with a creator prefix and without the actor name
   (`sources/s4animtools-wiki/getting-started-pose-jaw-rig.md`).
 
+- Age masks XORed into the top byte (second byte for the target actor): b 1, p 2, c 3, t 4, h 5, e 6, ad 8, cd 9,
+  al A, ac D, cc E, ah 10, ch 11. Plain FNV64 does not give the right instance for non-adult names (wiki, repeated by
+  the ModestPixels pack, `sources/modestpixels/knowledge-pack.md`; `community-reported`).
+- Actor/slot table: one primary entry per rig IK chain, the IK targets as secondary entries (wiki and ModestPixels
+  pack). The chain side agrees with `research/ts3-native-ik.md` (`verified-in-binary`).
+
 ## Events
 | type | TS3 meaning | payload |
 |---|---|---|
@@ -45,7 +51,7 @@ slot 512 B}`) -> `=CE=` events v0x103 -> 16-byte end block `0,0,0,1.0`. Details:
 | 10 | stop effect | hash effect + blank |
 
 - The two unknown DWORDs of event 5: wiki leaves them unknown; Arsil (forum) guessed FNV64; **clips that store
-  FNV64(effect name) low/high play their effects in game** (`verified-in-game` by the project author).
+  FNV64(effect name) low/high play their effects in game** (`verified-in-game` by XSauroxPlayer).
   MTS t=541491: brando130 found the DWORDs = FNV64 of the event **name** (`spaJets`, low half in Unknown01); Arsil saw
   clips where they are absent or differ and the effect name sits as FNV32 in `EffectNameHash`. **Unresolved** whether
   EA hashes the event name or the effect name (they may coincide); the effect-name choice works in game.
@@ -65,13 +71,17 @@ slot 512 B}`) -> `=CE=` events v0x103 -> 16-byte end block `0,0,0,1.0`. Details:
   Lipsync, Snap; TS3 has none of these.
 
 ## Timing
-- TS3 CLIP: 30 fps (wiki; `verified-in-game` by the project author).
-- TS2 ANIM: tick 1/800 s, keys baked at 24 fps, key i at i/(n-1) (`verified-in-game` by the project author). TS2 frames from ticks:
+- TS3 CLIP: 30 fps (wiki; `verified-in-game` by XSauroxPlayer).
+- TS2 ANIM: tick 1/800 s, keys baked at 24 fps, key i at i/(n-1) (`verified-in-game` by XSauroxPlayer). TS2 frames from ticks:
   `tick / 800 * 30 + 1`.
 - **CONTRADICTION**: Morita's TSM/TS3 -> TS2 tutorial on simblr treats a TS2 frame as 50 ms
   (`sources/simblr/7096-...ts2.md`); the verified finding above is 24 fps baked keys over 1/800 s ticks.
 
 ## Tools and pitfalls
+- Exported clip check (ModestPixels pack, method advice): reimport onto the target rig and compare the first and last
+  pose and the duration before testing in game.
+- Foot sliding (ModestPixels pack): measure world speed against the stride. Root translation in the clip plus
+  controller movement doubles the travel; neither gives walking in place. Decide which one owns travel.
 - s3pe + s3pi-wrappers (ChaosMageX): grid editing of IK table and events. ClipTool / S3PY RigTools (Blender 2.67b)
   does not export IK tables or events; its "Base Clip" option keeps the EA event grid. S3PE can keep IK targets when
   re-importing an edited clip.

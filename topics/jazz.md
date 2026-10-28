@@ -7,7 +7,8 @@ status: community-reported
 
 Sources: `sources/simblr/110-tutorial-jazz-scripts-adding-animations-to-your-objects-finished.md` (Lyralei, full
 recipe), s3pi-wrappers `JazzGraph` (https://github.com/ChaosMageX/s3pi-wrappers), wiki pages `Sims_3:Jazz` /
-`Sims_3:0x02D5DF13` (see INDEX for status), MTS threads t=642029, t=646478, t=469283, t=586434, t=661691.
+`Sims_3:0x02D5DF13` (see INDEX for status), MTS threads t=642029, t=646478, t=469283, t=586434, t=661691,
+the ModestPixels knowledge pack (`sources/modestpixels/knowledge-pack.md`).
 
 ## Minimal working machine (Lyralei, MTS t=642029)
 - Jazz text (SmoothJazz, **tabs not spaces**): `State Machine "N"`, `Actor "x"`, `Actor "obj"`,
@@ -58,10 +59,22 @@ recipe), s3pi-wrappers `JazzGraph` (https://github.com/ChaosMageX/s3pi-wrappers)
   From bit 0x10 up they differ by one bit. Evidence for s3pi: the wiki itself says TimingIgnored is "shorthand for
   OverrideTiming0, OverrideTiming1" (Master | Slave): 0x20 | 0x40 = 0x60 fits s3pi, while the wiki's own values give
   0x30, not its 0x40; the wiki looks like one row shifted (Mirror and OverrideMirror merged). Still unverified on EA
-  data. The project author's tools copy EA machines byte for byte and never write
+  data. XSauroxPlayer's tools copy EA machines byte for byte and never write
   these flags, so check an EA machine before writing them by hand.
+- The ModestPixels pack lists the wiki's Play flag values (read 2026-10-27, fewer rows, same numbers), so it sides with
+  the wiki here and is marked `contradicted` on this point (`sources/modestpixels/knowledge-pack.md`). Its state flags and priorities agree with the
+  wiki and s3pi.
+- Machine, state and actor names are FNV32 hashes; clip names are FNV64 (wiki, repeated by the ModestPixels pack;
+  `community-reported`).
 
 ## Pitfalls
+- SmoothJazz wants tab indentation, and the build on MTS is reported broken on the current patch; Lyralei recommends
+  the simlogical build (`sources/simblr/110-tutorial-jazz-scripts-adding-animations-to-your-objects-finished.md`,
+  repeated in the ModestPixels pack; `community-reported`).
+- `Create Prop` takes the prop object's catalog id (ModestPixels pack, from the wiki), consistent with the forum's
+  "OBJD instance, decimal or hex" (MTS t=469283).
+- Keep one table per interaction: runtime participant -> Jazz actor -> clip actor -> slot or prop. When a whole object
+  follows a Sim's hand, check which participant is bound to the prop role first (ModestPixels pack, method advice).
 - Object clip names should start with `o_` (Lyralei's claim, t=642029; not verified here). The old AnimTool flow sets
   a CLIP Source Name like `a2o_test.ma`, which is what `Assign Actor` uses (`sources/simswiki/tutorial-sims-3-custom-animations.md`).
 - SmoothJazz rewrites `a2o`/`a2c` to `a2a` and `c_` to `a_`, and chokes on `:` in ids.

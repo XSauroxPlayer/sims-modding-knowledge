@@ -39,10 +39,10 @@ Atavera (article), Numenor and others (Q&A). The attached PDF was not downloaded
 - Items near a large bounding (clickable) mesh can become unpickable.
 
 ## Against verified findings
-- SLOT layout verified on EA game files by the project author (`verified-in-binary`): resource `0x534C4F54`,
+- SLOT layout verified on EA game files by XSauroxPlayer (`verified-in-binary`): resource `0x534C4F54`,
   78-byte entries, `u16 type` (0 container, 1 location, 3 routing, 4 target - a fourth kind, **location**, that the
   article does not list), x y z always 0 in the objects read, `bone_index` = row of STR# 0x90 (empty rows counted).
   Agrees with "S2 = 2, I9 indexes 0x90" (SimPE's I9 = `bone_index`, I7 = `height`: the Love Tub's seats use 7 for
   sitting and 5 on Sims, matching the table above).
-- The per-kind numbering rule above matters when reading `0x2D` (Go To Routing Slot) operands; the project author's
+- The per-kind numbering rule above matters when reading `0x2D` (Go To Routing Slot) operands; XSauroxPlayer's
   parser indexes entries and was not re-checked against this rule.

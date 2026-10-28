@@ -16,6 +16,11 @@ on a rig), `sources/sims3cliptool/cliptool-site.md`, `sources/kilhian/making-pos
 - Info nodes: 11 entries per chain = `<S>_Info1..Info10` plus one extra slot; CLIP IK target N's weight is the local Z of `Info<N+1>` (verified,
   gate 2^-16, any weight above it = full IK). auRig chains: 0 L arm, 1 R arm, 2-3 legs, 4 root (verified).
 - Compress bones (`b__R_Calf__Compress__`) are listed separately in the old format.
+- Base game rigs live in `DeltaBuild0`; only the newer EA format matters for modding (wiki, repeated by the
+  ModestPixels pack, `sources/modestpixels/knowledge-pack.md`). v4 carrying the IK chains agrees with `research/ts3-native-ik.md`
+  (`verified-in-binary`).
+- Equal bone counts or similar bone names do not prove compatible bind poses: compare bind transforms and
+  influences, and test one joint before a whole clip (ModestPixels pack, method advice).
 
 ## Sim rigs (names seen in tools)
 - ClipTool blends: `afRig` (adult), `puRig` (toddler), `buRig` (baby), `multi-rigs/a2a_soc.blend` (two adults). EA

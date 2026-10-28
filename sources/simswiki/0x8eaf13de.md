@@ -27,8 +27,8 @@ Chain entry: chain length, pole, chain start, SlotInfoNode, SlotInfoRootNode, Sl
 
 ## Against verified findings
 - 11 info nodes per chain = `<S>_Info1..Info10` plus one extra entry; `Info<N+1>` local Z carries the weight of CLIP
-  IK target N (verified in the game binary and in game by the project author, `research/ts3-native-ik.md`). The wiki
+  IK target N (verified in the game binary and in game by XSauroxPlayer, `research/ts3-native-ik.md`). The wiki
   does not say what the info nodes mean.
-- auRig chain order (0 L arm, 1 R arm, 2-3 legs, 4 root) comes from the project author's checks on EA clips, not
+- auRig chain order (0 L arm, 1 R arm, 2-3 legs, 4 root) comes from XSauroxPlayer's checks on EA clips, not
   from the wiki.
 - The mirror index field is what mirrored clips use to swap left/right bones (inference, not verified).

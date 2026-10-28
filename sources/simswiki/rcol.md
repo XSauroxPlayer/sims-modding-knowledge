@@ -26,7 +26,7 @@ TkMk 0x033260E3, BOND 0x0355E0A6, LITE 0x03B4C61D, ANIM 0x63A33EA7 (animated tex
 ## Model chunks
 VBUF 0x01D0E6FB, **shadow VBUF 0x0229684B (no VRTF)**, IBUF 0x01D0E70F, **shadow IBUF 0x0229684F**, VRTF 0x01D0E723,
 SKIN 0x01D0E76B, plus MATD/MLOD/MTST/MODL; swizzle info type 0.
-- Consistent with shadow LODs verified in game by the project author (LODs 0x10000/0x10001, 8-byte position-only vertices,
+- Consistent with shadow LODs verified in game by XSauroxPlayer (LODs 0x10000/0x10001, 8-byte position-only vertices,
   short x/y/z normalized plus a fourth short 32767, decoded as `PosOffset + short * PosScale` from the MATD named by the
   mesh's `ScaleOffsetIndex`). Whether EA's shadow meshes actually use the 0x0229684B/0x0229684F chunk types was not
   checked.

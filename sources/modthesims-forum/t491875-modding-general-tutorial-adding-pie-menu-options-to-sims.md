@@ -5,7 +5,7 @@ fetched: 2026-10-28
 game: ts3
 tags: script-modding, interactions, events, xml, s3sa, debugging
 status: community-reported
-author: MTS tutorial author (credits Velocitygrass, Buzzler, twallan; see the thread)
+author: CmarNYC (as credited by the ModestPixels pack; the thread credits Velocitygrass, Buzzler, twallan)
 ---
 # Adding pie menu options to Sims (MTS Tutorials, ~2012)
 

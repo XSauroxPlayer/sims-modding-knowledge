@@ -6,7 +6,7 @@ status: verified-in-binary
 # IK and slots
 
 Verified reference (read it first, it beats any community source):
-- `research/ts3-native-ik.md` - static analysis of TS3W.exe 1.67 by the project author: how a CLIP's IK table moves
+- `research/ts3-native-ik.md` - static analysis of TS3W.exe 1.67 by XSauroxPlayer: how a CLIP's IK table moves
   the hands (`verified-in-binary`, and checked in game).
 
 Public code that parses the same data: s3pi-wrappers `ClipResource.cs` (https://github.com/ChaosMageX/s3pi-wrappers)
@@ -14,7 +14,7 @@ and, for TS4, s4animtools `ik_baker.py` (https://github.com/thepancake1/_s4animt
 
 ## Model (community view, matches the verified one)
 - The rig (0x8EAF13DE, new format v4) stores IK chains: bones, 11 Info nodes, pole, slotInfo, slotOffset, root.
-  Chain order on auRig: 0 left arm, 1 right arm, 2-3 legs, 4 root (`verified-in-game`: checked by the project author
+  Chain order on auRig: 0 left arm, 1 right arm, 2-3 legs, 4 root (`verified-in-game`: checked by XSauroxPlayer
   on EA clips and with hands placed on object levers in game).
 - The CLIP IK table lists, per chain, targets `{index N, actor (namespace), slot or bone name}`
   (`sources/simswiki/0x6b20c4f3.md`). Actor = a Jazz actor; EA objects often target plain rig bones, not RSLT slots
@@ -48,6 +48,9 @@ and, for TS4, s4animtools `ik_baker.py` (https://github.com/thepancake1/_s4animt
 - TS4 (s4animtools): "forearms and calf bones must be only rotated on the Z axis"; start and end in the base pose so
   IK blends; Bake IK writes world-IK channels (`sources/s4animtools-wiki/basic-ik-tutorial.md`). TS4 `IkConfiguration`
   = `SlotAssignment {chainId, slotId, targetNamespace, targetJointName}` - same idea as TS3.
+
+- cmomoney's Blender 2.65 TS3 Slot Editor edits routing, container, effect and IK target slots with their flags
+  (https://modthesims.info/d/456325, cited by the ModestPixels pack, `sources/modestpixels/knowledge-pack.md`).
 
 ## Open / contradictions
 - Community: "exact default slotOffset values are unknown". Verified: slotOffset is the hand pose in the slot frame,

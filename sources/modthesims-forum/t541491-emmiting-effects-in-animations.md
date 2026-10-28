@@ -26,7 +26,7 @@ brando130, Arsil. Synthesis: `topics/clip-format.md`, `topics/script-modding.md`
   Effect names can be found in EA code (`BuffTooSpicy.CreateEffectsAndPrepForAnimation`).
 
 ## Against verified findings
-- Verified in game by the project author: clips that store **FNV64(effect name)** low/high in the two DWORDs play
+- Verified in game by XSauroxPlayer: clips that store **FNV64(effect name)** low/high in the two DWORDs play
   their effects. brando130 reads the same DWORD order
   (low first) but says the hashed string is the **event name**. In his example the event name may also be the
   effect's name; **not resolved** - check one EA clip where event name and effect name differ.

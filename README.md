@@ -45,6 +45,11 @@ python tools/build_index.py                       # rebuild INDEX.md after addin
 ```
 Terms are case-insensitive regular expressions. Plain `grep -ri` over the folders works too.
 
+## Using it with an AI agent
+`SKILL.md` tells an agent how to navigate the pages, how far to trust each status label and how to cite them.
+Clone the repository as a skill (for Claude Code: `git clone https://github.com/XSauroxPlayer/sims-modding-knowledge.git ~/.claude/skills/sims-modding-knowledge`),
+or just point your agent at `SKILL.md`. `AGENTS.md` points agents that open the repository to the same file.
+
 ## Third-party content
 - The sources summarised here belong to their authors and sites. Pages keep only summaries, short quotes (one
   sentence at most), names and facts, always with a link and credit. Read the original for the full content, and

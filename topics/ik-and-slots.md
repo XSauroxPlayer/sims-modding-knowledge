@@ -37,6 +37,24 @@ and, for TS4, s4animtools `ik_baker.py` (https://github.com/thepancake1/_s4animt
   BOND offset puts the hand slot on the wrist (MTS t=668206; the OP's `S3_slotOffsetPlacements` .blend action holds
   the per-age offsets; lizcandor: applying them fixed her IK-chain tests). Do not export a Sim clip with the slot
   moved to the BOND position, or the offset is applied twice.
+- **Measured on every EA BOND** (19,439 resources): about 18,000 clothing BONDs (one per body shape: normal, fat,
+  fit, thin, special; per outfit part) set the local frame of every Sim `*_slot` bone (hand, carry, glasses, mouth,
+  ankle, ring, bracelet and about 100 cloth-collision targets); the rest are face-slider BONDs on face bones. They
+  never touch the arm or IK bones. In the adult rig (`auRig`) every Sim slot sits at its parent's origin, so the
+  BOND is the only source of the slot's real place. `b__R_Hand_slot` local = (-0.017, 0.041, 0.009) or
+  (-0.010, 0.041, 0.009) with identity rotation: 4.3-4.6 cm from the hand bone toward the palm, for every age except
+  toddlers (-0.007, 0.038, 0.008), and the same in every body shape. `b__Glasses_slot` local = (0, 0.059, 0.113),
+  in front of the eyes; `b__R_carry_slot` = (-0.07, -0.22, 0.11) from its parent, in front of the belly.
+  [verified-in-binary: game data]
+- `Sim.ContainmentSlots.RightHand` (1557334703) is the RSLT containment slot on bone `b__R_Hand_slot` (LeftHand
+  3703456078 on `b__L_Hand_slot`; RightCarry on `b__R_carry_slot`; Glasses on `b__Glasses_slot`). The RSLT stores
+  the slot at the bare rig position, i.e. the hand bone origin. So `ParentToSlot(sim, RightHand)` hangs an object
+  about 4.5 cm off the hand bone, toward the palm, once BOND is applied to the slot bones at runtime. That the game
+  applies it is inferred, not traced in the executable: without it the carry slot would be inside the chest and the
+  glasses slot inside the head, and MTS t=668206 reports the same. A tool that places held props relative to
+  `b__R_Hand__` must add this offset.
+- Hand IK is not affected: IK targets are object slots, and BOND moves no arm bone (`research/ts3-native-ik.md`
+  section 7).
 - Info naming confirmed by TheSweetSimmer (t=637608): `L_info_1` = IK target index 0 of the left arm, matching the
   verified `Info<N+1>` rule. Maternity BONDs: `sources/simblr/5695-...md`.
 

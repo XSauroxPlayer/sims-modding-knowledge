@@ -116,9 +116,10 @@ blended back with FK. [binary]
 ## 7. Body shape and outfits
 - None of the functions above applies a per-body-shape or per-outfit hand offset, and bone lengths come from the
   current pose. In this path `slotOffset` is applied exactly once. [binary for these functions]
-- Whether BOND (0x0355E0A6) or morph bone deltas reach LOCAL before the IK node, or only at skinning time, was not
-  traced. If they are applied at skinning they move the hand *after* IK, which would explain a constant hand-to-slot
-  error per body shape. [open]
+- BOND (0x0355E0A6) does not move the arm: a scan of all 19,439 EA BONDs shows they set only the Sim `*_slot` bones
+  and face bones, never the arm or IK bones (one BOND touches `b__R_Hand__`, seven touch clavicle/thigh `_Offset__`
+  bones). So BOND cannot shift the hand away from an object-slot IK target. Where the timing of BOND matters is for
+  objects parented to Sim slots: see `topics/ik-and-slots.md`, "Sim slots and body shape". [data]
 
 ## Function reference (TS3W.exe 1.67, RVAs; names are descriptive, not EA's)
 | RVA | role |
@@ -139,5 +140,5 @@ blended back with FK. [binary]
 ## Open points
 - Which layers reduce the remaining weight at the `slotInfo` bone (section 3).
 - The position path for targets on the Sim's own bones (section 4).
-- Whether BOND/morph deltas act before or after IK (section 7).
+- Whether morph (BGEO) bone deltas reach the arm bones before IK (BOND does not, section 7).
 - What the eleventh Info entry is used for.

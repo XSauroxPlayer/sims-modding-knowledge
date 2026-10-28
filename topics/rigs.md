@@ -38,8 +38,8 @@ on a rig), `sources/sims3cliptool/cliptool-site.md`, `sources/kilhian/making-pos
 ## BOND (slot adjust)
 - Per-outfit tweaks of slot/bone offset, scale and rotation, no RCOL tag. Community guess (MTS t=629522): source of
   default `slotOffset` values for IK. **Contradicted** by the binary analysis: `slotOffset` is the raw CLIP track and
-  the IK functions contain no per-outfit/body-shape offset; BOND at skinning time (after IK) is untraced
-  (`research/ts3-native-ik.md` section 7).
+  the IK functions contain no per-outfit/body-shape offset. BOND moves the Sim `*_slot` bones (and face bones),
+  never the arm/IK bones: see `topics/ik-and-slots.md`, "Sim slots and body shape".
 
 ## TS4 (technique that transfers)
 - TS4 rig name = the actor name the clip plays on (`x` for Sims); object rigs are exported named exactly as the actor.

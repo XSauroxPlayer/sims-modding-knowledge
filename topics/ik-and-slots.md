@@ -53,6 +53,12 @@ and, for TS4, s4animtools `ik_baker.py` (https://github.com/thepancake1/_s4animt
   applies it is inferred, not traced in the executable: without it the carry slot would be inside the chest and the
   glasses slot inside the head, and MTS t=668206 reports the same. A tool that places held props relative to
   `b__R_Hand__` must add this offset.
+- **EA clips confirm the runtime BOND on hand slots.** 164 EA Sim clips aim one arm's IK at the Sim's own other
+  hand slot (64 arms, 61 of them rigid between hand and target). Solving where that target slot must sit for the
+  clip to close the grip puts it 4.22-4.59 cm from the hand bone, and 0.02-0.72 cm (median 0.65) from the BOND
+  place above. The points form two clusters, about (+-1.0, 4.1, 0.9) and (+-1.65, 4.19, 0.88) cm, matching the two
+  BOND variants. So EA animators built these clips against BOND-placed hand slots. The x component used at runtime
+  (+-0.7 cm between the variants) is not settled. [verified: EA content, not traced in the executable]
 - Hand IK is not affected: IK targets are object slots, and BOND moves no arm bone (`research/ts3-native-ik.md`
   section 7).
 - Info naming confirmed by TheSweetSimmer (t=637608): `L_info_1` = IK target index 0 of the left arm, matching the
